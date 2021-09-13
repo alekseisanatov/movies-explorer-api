@@ -4,11 +4,10 @@ const NotFoundError = require('../errors/NotFoundError');
 const AccessingError = require('../errors/AccessingError');
 
 module.exports.getFilms = (req, res, next) => {
-
   Movie.find({})
     .populate('movie')
     .then((movies) => {
-      res.status(200).send(movies)
+      res.status(200).send(movies);
     })
     .catch(next);
 };
@@ -28,7 +27,8 @@ module.exports.createFilm = (req, res, next) => {
     nameEN,
   } = req.body;
 
-  Movie.create({ country,
+  Movie.create({
+    country,
     director,
     duration,
     year,
@@ -42,7 +42,7 @@ module.exports.createFilm = (req, res, next) => {
     owner: req.user._id,
   })
     .then((movie) => {
-      res.status(200).send(movie)
+      res.status(200).send(movie);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -50,7 +50,7 @@ module.exports.createFilm = (req, res, next) => {
       } else {
         next(err);
       }
-    })
+    });
 };
 
 module.exports.deleteMovie = (req, res, next) => {

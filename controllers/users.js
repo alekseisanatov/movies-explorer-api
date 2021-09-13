@@ -39,7 +39,7 @@ module.exports.updateUser = (req, res, next) => {
       } else {
         next(err);
       }
-    })
+    });
 };
 
 module.exports.createUser = (req, res, next) => {

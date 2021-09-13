@@ -20,7 +20,7 @@ mongoose.connect(MONGO_URL, {
 app.use(requestLogger);
 app.use(cookieParser());
 app.use(express.json());
-// app.use(helmet());
+app.use(helmet());
 app.use(router);
 app.use(errorLogger);
 app.use(errors());

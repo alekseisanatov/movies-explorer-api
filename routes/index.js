@@ -1,7 +1,7 @@
 const router = require('express').Router();
+const { celebrate, Joi } = require('celebrate');
 const userRouter = require('./users');
 const movieRouter = require('./movies');
-const {celebrate, Joi} = require("celebrate");
 const NotFoundError = require('../errors/NotFoundError');
 const auth = require('../middlewares/auth');
 
@@ -16,13 +16,13 @@ router.post('/signup', celebrate({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
     name: Joi.string().required(),
-  })
+  }),
 }), createUser);
 router.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-  })
+  }),
 }), login);
 router.delete('/logout', logout);
 router.use(auth);

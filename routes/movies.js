@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const validator = require('validator');
-const { celebrate, Joi } = require("celebrate");
+const { celebrate, Joi } = require('celebrate');
 
 const checkLink = (link) => {
   const result = validator.isURL(link);
@@ -30,7 +30,7 @@ router.post('/', celebrate({
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
-  })
+  }),
 }), createFilm);
 router.delete('/:id', celebrate({
   params: Joi.object().keys({
