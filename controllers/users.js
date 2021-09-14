@@ -28,13 +28,11 @@ module.exports.updateUser = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Нет пользователя по заданному id'));
       } else {
-        res.status(200).send(user);
+        res.send(user);
       }
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new WrongData('Невалидный id'));
-      } else if (err.name === 'MongoError' && err.code === 11000) {
+      if (err.name === 'MongoError' && err.code === 11000) {
         next(new WrongEmailError('Пользователь с данной почтой уже существует'));
       } else {
         next(err);
