@@ -1,2 +1,2 @@
 # movies-explorer-api
-Yac-Diploma backend
+* Доступ к API - https://api.sanatov.nomoredomains.monster/
