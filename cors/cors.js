@@ -5,7 +5,7 @@ const allowedCors = [
   'http://sanatov.nomoredomains.monster',
   'https://api.sanatov.nomoredomains.monster',
   'http://api.sanatov.nomoredomains.monster',
-  'http://localhost:3000',
+  'http://localhost:3000'
 ];
 
 // eslint-disable-next-line consistent-return
