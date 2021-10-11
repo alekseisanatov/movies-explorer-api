@@ -58,6 +58,21 @@ module.exports.deleteMovie = (req, res, next) => {
     .then((movie) => {
       if (!movie) {
         next(new NotFoundError('Нет карточки по заданному id'));
+      } else {
+        movie
+          .delete()
+          .then((data) => res.send(data))
+          .catch(next);
+      }
+    })
+    .catch(next);
+};
+
+/*module.exports.deleteMovie = (req, res, next) => {
+  Movie.findById(req.params.id)
+    .then((movie) => {
+      if (!movie) {
+        next(new NotFoundError('Нет карточки по заданному id'));
       } else if (movie.owner.toString() !== req.user._id) {
         next(new AccessingError('Нет прав на удаление фильма'));
       } else {
@@ -68,4 +83,4 @@ module.exports.deleteMovie = (req, res, next) => {
       }
     })
     .catch(next);
-};
+}; */
